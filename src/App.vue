@@ -1,10 +1,14 @@
 <template>
     <div id="app">
         <nav class="nav-bar">
-            <router-link to="/"> <h5>Table List Post</h5></router-link> |
-            <router-link to="/editor"><h5>Editor</h5></router-link>
+            <router-link to="/" style="text-decoration: none">
+                <h5>Home</h5></router-link
+            >
+            |
+            <router-link style="text-decoration: none" to="/add-post"
+                ><h5 class="add-new-post">Add New Post</h5></router-link
+            >
         </nav>
-
         <router-view />
     </div>
 </template>
@@ -166,17 +170,21 @@ table {
     font-family: "Poppins", sans-serif;
 }
 .nav-bar {
+    display: block;
     text-align: center;
     margin: 20px;
-    text-decoration: none;
+    background: #fff;
 }
 
 h5 {
     display: inline;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     background: rgb(0, 92, 132);
     color: #fff;
     padding: 10px 5px;
     border-radius: 4px;
+}
+.add-new-post {
+    background: #198754;
 }
 </style>

@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import TableList from "../views/TableList.vue";
 
 Vue.use(VueRouter);
 
@@ -8,13 +7,17 @@ const routes = [
   {
     path: "/",
     name: "CrudApp",
-    // component: TableList,
     component: () => import("../views/CrudApp.vue"),
   },
   {
-    path: "/editor",
-    name: "editor",
-    component: () => import("../views/EditorView.vue"),
+    path: "/add-post",
+    name: "AddPost",
+    component: () => import("../views/AddPost.vue"),
+  },
+  {
+    path: "/detail/:id",
+    name: "detail",
+    component: () => import("../views/PostDetail.vue"),
   },
 ];
 

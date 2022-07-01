@@ -6,19 +6,21 @@
             </thead>
 
             <tbody>
-                <tr v-for="post in $store.state.posts" :key="post.id">
-                    <ListTable
+                <tr v-for="post in $store.state.postOnPage" :key="post.id">
+                    <ListPost
                         v-for="(item, index) in header"
                         :key="index"
                         :post="post"
                         :item="item"
+                        @click.native="goToDetail(post)"
                     />
 
                     <FunctionButton
                         name="Edit"
                         variant="info"
-                        @click.native="editPost(post)"
+                        @click.native="goToDetail(post)"
                     />
+
                     <FunctionButton
                         name="X"
                         variant="danger"
@@ -32,7 +34,7 @@
 
 <script>
 import HeaderTable from "../components/TableList/HeaderTable.vue";
-import ListTable from "../components/TableList/ListTable.vue";
+import ListPost from "../components/TableList/ListPost.vue";
 import FunctionButton from "../components/TableList/FunctionButton.vue";
 
 export default {
@@ -50,11 +52,11 @@ export default {
             this.$store.dispatch("deletePost", post);
         },
 
-        editPost: function (post) {
-            this.$store.commit("EDIT_POST", post);
+        goToDetail(post) {
+            this.$router.push({ path: `/detail/${post.id}` });
         },
     },
-    components: { HeaderTable, ListTable, FunctionButton },
+    components: { HeaderTable, ListPost, FunctionButton },
 };
 </script>
 
@@ -71,9 +73,13 @@ td {
     width: 80%;
     margin: auto;
 }
+tbody tr {
+    height: 90px;
+}
 
 tbody tr:hover {
     background: rgb(225, 225, 225);
     cursor: pointer;
+    transition: 0.3s;
 }
 </style>

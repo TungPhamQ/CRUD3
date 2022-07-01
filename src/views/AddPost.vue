@@ -27,12 +27,7 @@
             </label>
         </div>
         <div class="btn">
-            <b-button type="submit" v-if="!this.input.id" variant="success"
-                >Add New Post
-            </b-button>
-            <b-button type="submit" v-if="this.input.id" variant="warning"
-                >Update Post</b-button
-            >
+            <b-button type="submit" variant="success">Add New Post </b-button>
         </div>
     </form>
 </template>
@@ -68,16 +63,7 @@ export default {
                 title: "",
                 body: "",
             };
-        },
-        updatePost: function () {
-            this.$store.dispatch("editPost", this.input);
-
-            this.input = {
-                userId: "",
-                id: "",
-                title: "",
-                body: "",
-            };
+            this.$router.push("/");
         },
     },
     computed: {

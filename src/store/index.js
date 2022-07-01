@@ -7,6 +7,7 @@ Vue.use(Vuex);
 const state = {
   posts: [],
   post: {},
+  postOnPage: [],
 };
 
 //to handle state
@@ -77,6 +78,9 @@ const mutations = {
   },
   EDIT_POST(state, post) {
     state.post = post;
+  },
+  PAGE_PANIGATION(state, postOnPage) {
+    state.postOnPage = postOnPage;
   },
 };
 

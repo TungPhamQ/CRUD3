@@ -1,11 +1,13 @@
 <template>
     <div style="width: 100%" class="crud-app">
-        <TableList :header="header" />
+        <PaginationPage />
+        <PostTable :header="header" />
     </div>
 </template>
 
 <script>
-import TableList from "../views/TableList.vue";
+import PostTable from "../components/PostTable.vue";
+import PaginationPage from "../components/PaginationPage.vue";
 
 export default {
     name: "CrudApp",
@@ -35,7 +37,7 @@ export default {
             ],
         };
     },
-    components: { TableList },
+    components: { PostTable, PaginationPage },
     props: {
         posts: Array,
     },
