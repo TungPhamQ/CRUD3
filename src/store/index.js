@@ -7,7 +7,7 @@ Vue.use(Vuex);
 const state = {
   posts: [],
   post: {},
-  postOnPage: [],
+  postsOnPage: [],
 };
 
 //to handle state
@@ -18,10 +18,10 @@ const actions = {
   async getPosts({ commit }) {
     try {
       const res = await axios.get(
-        // "https://jsonplaceholder.typicode.com/posts?_limit=5"
-        "https://jsonplaceholder.typicode.com/posts"
+        // "https://jsonplaceholder.typicode.com/posts?_limit=30"
+        "https://jsonplaceholder.typicode.com/posts?limit"
       );
-      commit("GET_POSTS", res.data);
+      commit("SET_POSTS", res.data);
     } catch (err) {
       console.error(err);
     }
@@ -67,7 +67,7 @@ const actions = {
 
 //to handle mutations
 const mutations = {
-  GET_POSTS(state, posts) {
+  SET_POSTS(state, posts) {
     state.posts = posts;
   },
   DELETE_POST(state, post) {
@@ -79,8 +79,8 @@ const mutations = {
   EDIT_POST(state, post) {
     state.post = post;
   },
-  PAGE_PANIGATION(state, postOnPage) {
-    state.postOnPage = postOnPage;
+  PAGE_PANIGATION(state, postsOnPage) {
+    state.postsOnPage = postsOnPage;
   },
 };
 

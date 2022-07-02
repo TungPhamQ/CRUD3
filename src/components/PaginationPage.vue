@@ -1,14 +1,11 @@
 <template>
     <div class="pagination">
         <div class="pagination-row">
-            <span v-for="(item, index) in new Array(10)" :key="index">
-                <button
-                    :class="[
-                        'pagination-button',
-                        currentPage == index + 1 ? 'active' : '',
-                    ]"
-                    @click="panigation(index + 1)"
-                >
+            <span v-for="(item, index) in pageNumber" :key="index">
+                <button :class="[
+                    'pagination-button',
+                    currentPage == index + 1 ? 'active' : '',
+                ]" @click="panigation(index + 1)">
                     {{ index + 1 }}
                 </button>
             </span>
@@ -28,11 +25,11 @@ export default {
     methods: {
         panigation: function (index) {
             this.currentPage = index;
-            this.postOnPage = this.$store.state.posts.slice(
+            this.postsOnPage = this.$store.state.posts.slice(
                 this.startPost,
-                this.endPost
+                this.endPost,
             );
-            this.$store.commit("PAGE_PANIGATION", this.postOnPage);
+            this.$store.commit("PAGE_PANIGATION", this.postsOnPage);
         },
     },
     computed: {
@@ -44,10 +41,26 @@ export default {
             const endPost = this.startPost + this.postPerPage;
             return endPost;
         },
+        postAmount() {
+            let postAmount = this.$store.state.posts.length;
+            return postAmount
+        },
+        pageNumber() {
+            let pageNumber = this.postAmount / this.postPerPage
+            return pageNumber
+        }
     },
-    beforeMount() {
-        this.panigation(this.currentPage);
-    },
+
+    watch: {
+        '$store.state.posts': {
+            immediate: true,
+            handler() {
+                this.panigation(this.currentPage)
+            }
+        },
+    }
+
+
 };
 </script>
 
@@ -57,6 +70,7 @@ export default {
     display: block;
     text-align: center;
 }
+
 .pagination-button {
     padding: 8px;
     margin: 2px;

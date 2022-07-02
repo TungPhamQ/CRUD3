@@ -4,28 +4,14 @@
             <thead>
                 <HeaderTable :header="header" />
             </thead>
-
             <tbody>
-                <tr v-for="post in $store.state.postOnPage" :key="post.id">
-                    <ListPost
-                        v-for="(item, index) in header"
-                        :key="index"
-                        :post="post"
-                        :item="item"
-                        @click.native="goToDetail(post)"
-                    />
+                <tr v-for="post in $store.state.postsOnPage" :key="post.id">
+                    <ListPost v-for="(item, index) in header" :key="index" :post="post" :item="item"
+                        @click.native="goToDetail(post)" />
 
-                    <FunctionButton
-                        name="Edit"
-                        variant="info"
-                        @click.native="goToDetail(post)"
-                    />
+                    <FunctionButton name="Edit" variant="info" @click.native="goToDetail(post)" />
 
-                    <FunctionButton
-                        name="X"
-                        variant="danger"
-                        @click.native="deletePost(post)"
-                    />
+                    <FunctionButton name="X" variant="danger" @click.native="deletePost(post)" />
                 </tr>
             </tbody>
         </table>
@@ -73,6 +59,7 @@ td {
     width: 80%;
     margin: auto;
 }
+
 tbody tr {
     height: 90px;
 }
