@@ -9,6 +9,7 @@
                     {{ index + 1 }}
                 </button>
             </span>
+
         </div>
     </div>
 </template>
@@ -31,6 +32,8 @@ export default {
             );
             this.$store.commit("PAGE_PANIGATION", this.postsOnPage);
         },
+
+
     },
     computed: {
         startPost() {
@@ -47,17 +50,20 @@ export default {
         },
         pageNumber() {
             let pageNumber = this.postAmount / this.postPerPage
-            return pageNumber
+            return Math.ceil(pageNumber)
         }
+
+
     },
 
     watch: {
         '$store.state.posts': {
             immediate: true,
             handler() {
-                this.panigation(this.currentPage)
+                this.panigation(this.currentPage);
             }
         },
+
     }
 
 
