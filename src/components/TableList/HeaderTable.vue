@@ -4,6 +4,7 @@
             v-for="(item, index) in header"
             :key="index"
             :colspan="item.colspan"
+            :style="{ width: item.width + '%' }"
         >
             {{ item.name }}
         </th>

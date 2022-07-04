@@ -1,6 +1,6 @@
 <template>
     <td>
-        <b-button :variant="variant">{{ name }} </b-button>
+        <b-button class="btn" :variant="variant">{{ name }} </b-button>
     </td>
 </template>
 

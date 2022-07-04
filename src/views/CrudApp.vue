@@ -18,21 +18,25 @@ export default {
                     id: "id",
                     name: "ID",
                     colspan: 1,
+                    width: 5,
                 },
                 {
                     id: "userId",
                     name: "UserId",
                     colspan: 1,
+                    width: 5,
                 },
                 {
                     id: "title",
                     name: "Title",
                     colspan: 1,
+                    width: 30,
                 },
                 {
                     id: "body",
                     name: "Body",
                     colspan: 1,
+                    width: 60,
                 },
             ],
         };
@@ -48,7 +52,6 @@ export default {
 <style scoped>
 .crud-app {
     background: rgb(255, 250, 250);
-    /* background: #000; */
     height: 100vh;
 }
 </style>
