@@ -12,4 +12,6 @@ export default {
 </script>
 
 <style>
+td {
+}
 </style>

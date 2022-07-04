@@ -4,9 +4,8 @@
             <thead>
                 <HeaderTable :header="header" />
             </thead>
-
             <tbody>
-                <tr v-for="post in $store.state.postOnPage" :key="post.id">
+                <tr v-for="post in $store.state.postsOnPage" :key="post.id">
                     <ListPost
                         v-for="(item, index) in header"
                         :key="index"
@@ -49,7 +48,9 @@ export default {
     computed: {},
     methods: {
         deletePost: function (post) {
-            this.$store.dispatch("deletePost", post);
+            if (confirm("YOU WANT TO DELETE POST " + post.id)) {
+                this.$store.dispatch("deletePost", post);
+            }
         },
 
         goToDetail(post) {
@@ -73,6 +74,7 @@ td {
     width: 80%;
     margin: auto;
 }
+
 tbody tr {
     height: 90px;
 }
