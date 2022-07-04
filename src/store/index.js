@@ -19,7 +19,7 @@ const actions = {
     try {
       const res = await axios.get(
         // "https://jsonplaceholder.typicode.com/posts?_limit=30"
-        "https://jsonplaceholder.typicode.com/posts?limit"
+        "https://jsonplaceholder.typicode.com/posts"
       );
       commit("SET_POSTS", res.data);
     } catch (err) {

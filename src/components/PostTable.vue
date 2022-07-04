@@ -1,6 +1,6 @@
 <template>
     <div class="table">
-        <table style="width: 100%">
+        <table>
             <thead>
                 <HeaderTable :header="header" />
             </thead>
@@ -48,7 +48,7 @@ export default {
     computed: {},
     methods: {
         deletePost: function (post) {
-            if (confirm("YOU WANT TO DELETE POST " + post.id)) {
+            if (confirm("DID YOU WANT TO DELETE POST " + post.id + "?")) {
                 this.$store.dispatch("deletePost", post);
             }
         },
@@ -73,10 +73,12 @@ td {
     background: #fff;
     width: 80%;
     margin: auto;
+    position: relative;
 }
-
-tbody tr {
-    height: 90px;
+table {
+    height: 90vh;
+    position: absolute;
+    top: 30px;
 }
 
 tbody tr:hover {
