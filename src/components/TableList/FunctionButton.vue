@@ -14,4 +14,7 @@ export default {
 </script>
 
 <style>
+.btn {
+    color: #fff;
+}
 </style>

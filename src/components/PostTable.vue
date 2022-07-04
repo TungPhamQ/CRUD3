@@ -31,13 +31,13 @@
         </table>
     </div>
 </template>
+<script src="sweetalert2/dist/sweetalert2.min.js"></script>
 
 <script>
 import HeaderTable from "../components/TableList/HeaderTable.vue";
 import ListPost from "../components/TableList/ListPost.vue";
 import FunctionButton from "../components/TableList/FunctionButton.vue";
 // import ModalConfirmDelete from "./ModalConfirmDelete.vue";
-
 export default {
     props: {
         header: Array,
