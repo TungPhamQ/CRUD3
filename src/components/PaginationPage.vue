@@ -45,7 +45,7 @@ export default {
             return endPost;
         },
     },
-    beforeMount() {
+    mounted() {
         this.panigation(this.currentPage);
     },
 };
