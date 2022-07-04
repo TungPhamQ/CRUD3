@@ -1,5 +1,6 @@
 <template>
     <div class="table">
+        <!-- <ModalConfirmDelete :isShow="isShow" @delete="deleteConfirm" /> -->
         <table>
             <thead>
                 <HeaderTable :header="header" />
@@ -35,6 +36,7 @@
 import HeaderTable from "../components/TableList/HeaderTable.vue";
 import ListPost from "../components/TableList/ListPost.vue";
 import FunctionButton from "../components/TableList/FunctionButton.vue";
+// import ModalConfirmDelete from "./ModalConfirmDelete.vue";
 
 export default {
     props: {
@@ -43,19 +45,38 @@ export default {
     data() {
         return {
             post: {},
+            isShow: false,
         };
     },
     computed: {},
     methods: {
         deletePost: function (post) {
-            if (confirm("YOU WANT TO DELETE POST " + post.id + "?")) {
-                this.$store.dispatch("deletePost", post);
+            this.$swal
+                .fire({
+                    title: "You want to delete post " + post.id + "?",
+                    showCancelButton: true,
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        this.$store.dispatch("deletePost", post);
+                        this.$swal.fire("Deleted", "", "success");
+                    }
+                });
+            {
+                // this.$store.dispatch("deletePost", post);
             }
         },
 
         goToDetail(post) {
             this.$router.push({ path: `/detail/${post.id}` });
         },
+        // confirmDelete() {
+        //     this.isShow = true;
+        //     this.deleteConfirm();
+        // },
+        // deleteConfirm() {
+        //     console.log(1);
+        // },
     },
     components: { HeaderTable, ListPost, FunctionButton },
 };
